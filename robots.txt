@@ -1,4 +1,8 @@
-# TAFtoolsによって生成された Robots.txt
 User-agent: *
 Disallow: 
-Disallow: /js/
+User-agent: baiduspider
+Disallow: /
+User-agent: naverbot
+User-agent: yeti
+Disallow: /
+Disallow: /js
