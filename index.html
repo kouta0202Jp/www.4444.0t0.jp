@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>kouta8888</title>
+  <meta name="description" content="kouta8888">
+  <link rel="stylesheet" href="style.css" type="text/css">
+  <link rel="canonical" href="https://8008.f5.si/">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap">
+  <script src="/js/china.js" defer></script>
+  <link rel="icon" href="icon.jpeg">
+  <style>
+  body {
+    font-family: 'Roboto', sans-serif;
+  }
+  </style>
+  <script src="https://kit.fontawesome.com/5d917beab5.js" crossorigin="anonymous"></script>
+</head>
+
+<body style="overflow: hidden;/* margin: 0px; */height: 100vh;background: url(https://i.pinimg.com/736x/37/91/5e/37915e35096668309be0c8b95d909ac7.jpg) center center / cover;color: white;position: relative;min-height: 100%;top: 0px;">
+  <div class="loading">
+    <h1>
+      <i>4444.0t0.jp</i>
+    </h1>
+  </div>
+  <div style="width: 100%; height: 100%; margin: 0 auto; overflow-y: auto; color: white; padding: 7px; border-radius: 10px;">
+    <div class="card1" style="margin 0 auto;">
+      <div class="img">
+        <img src="icon.jpeg" alt="icon">
+      </div>
+      <center>
+        <div class="name">KOUTA8888</div>
+        <div style="font-size:35px;">
+          <center>
+            <!-- YouTube アイコン -->
+            <a href="https://www.youtube.com/@%E3%82%84%E3%81%BE%E3%81%A1%E3%82%83%E3%82%93-q3i" target="_blank" aria-label="YouTube">
+              <i class="fa-brands fa-youtube" style="color: #fff;" aria-hidden="true"></i>
+            </a>
+            <!-- X アイコン -->
+            <a href="https://x.com/zbSNGF1Tp959700" target="_blank" aria-label="X">
+              <i class="fa-brands fa-x-twitter" style="color: #fff;" aria-hidden="true"></i>
+            </a>
+            <!-- GitHub アイコン -->
+            <a href="https://github.com/kouta0202Jp" target="_blank" aria-label="GitHub">
+              <i class="fa-brands fa-github" style="color: #fff;" aria-hidden="true"></i>
+            </a>
+            <!-- Pinterest -->
+            <a href="https://jp.pinterest.com/kouta8448/" target="_blank">
+              <i class="fa-brands fa-pinterest" style="color: #ffffff;" aria-hidden="true"></i>
+            </a>
+          </center>
+        </div>
+        <i class="fa-solid fa-location-dot" style="color: #fff; font-size: 18px; margin-right: 1px;" aria-hidden="true"></i>
+        <strong style="font-size: 18px; color: #fff;">Japan/Sizuoka</strong>
+        <audio id="audioPlayer">
+        </audio>
+        <div>
+          <button id="playButton">再生</button>
+        </div>
+      </center>
+      <div style="font-family: 'Arial', sans-serif; color: #fff; background: transparent; border: 2px solid #fff; padding: 1.5rem; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <h2 style="text-align: center; border-bottom: 2px solid #fff; padding-bottom: 0.5rem; margin-bottom: 1rem;">My Profile</h2>
+        <p>
+          <strong>誕生日:</strong>6月5日</p>
+        <p>
+          <strong>好きな歌手:</strong>backnumber, 西野カナ</p>
+        <p>
+          <strong>好きな食べ物:</strong>ステーキ</p>
+        <p>
+          <strong>趣味:</strong>インターネットサーフィン</p>
+      </div>
+      <div class="skill-container">
+        <center>
+          <h1>My Skills</h1>
+        </center>
+        <div class="skill">
+          <span>HTML</span>
+          <div class="skill-bar">
+            <div class="skill-progress html">
+            </div>
+          </div>
+        </div>
+        <div class="skill">
+          <span>CSS</span>
+          <div class="skill-bar">
+            <div class="skill-progress css">
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <a href="https://koutablog.fc2.net/" class="button">Blog</a>
+      <br>
+      <a href="/1.htm" class="button">翻訳.js</a>
+      <br>
+      <a href="/kurimatu.htm" class="button">I LOVE 栗松
+      </a>
+      <br>
+      <a href="/banner.htm" class="button">My Banner</a>
+      <p align="center">(C) 2024 KOUTA All rights reserved</p>
+    </div>
+  </div>
+  <script>
+  // 再生する曲リスト
+          const playlist = [
+              "https://dn720301.ca.archive.org/0/items/soundcloud-155173732/155173732.mp3",
+              "http://masanobu.4444.0t0.jp/music/Nightcore TiK Tok.mp3",
+              "http://masanobu.4444.0t0.jp/music/[Nightcore] You're Gonna Go Far Kid 4.mp3"
+          ];
+  
+          let currentTrackIndex = 0; // 現在の曲インデックス
+          const audioPlayer = document.getElementById("audioPlayer");
+          const playButton = document.getElementById("playButton");
+  
+          // 曲をロードして再生する関数
+          function loadAndPlayTrack(index) {
+              if (index < playlist.length) {
+                  audioPlayer.src = playlist[index]; // 曲を設定
+                  audioPlayer.play();               // 再生
+                  playButton.textContent = "停止";  // ボタンのテキスト変更
+              } else {
+                  console.log("プレイリストの終わりです");
+                  playButton.disabled = true; // プレイリストの終わりでボタンを無効化
+              }
+          }
+  
+          // 曲が終了したら次の曲を再生
+          audioPlayer.addEventListener("ended", () => {
+              currentTrackIndex++;
+              if (currentTrackIndex < playlist.length) {
+                  loadAndPlayTrack(currentTrackIndex); // 次の曲を再生
+              } else {
+                  console.log("プレイリストが終了しました");
+                  playButton.disabled = true; // プレイリストが終了したら停止ボタンを無効化
+              }
+          });
+  
+          // 再生ボタンをクリックした時の処理
+          playButton.addEventListener("click", () => {
+              if (audioPlayer.paused) {
+                  loadAndPlayTrack(currentTrackIndex); // 曲を再生
+              } else {
+                  audioPlayer.pause(); // 曲を停止
+                  playButton.textContent = "再生"; // ボタンのテキストを変更
+              }
+          });
+  </script>
+</body>
+
+</html>
