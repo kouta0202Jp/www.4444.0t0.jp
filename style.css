@@ -1,0 +1,247 @@
+.img {
+  text-align: center;
+}
+
+center {
+  margin: 0;
+  padding: 0;
+}
+
+.name {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.j1 img {
+  padding-left: 10px;
+}
+
+.img img {
+  border: 4px solid red;
+  /* 初期状態のボーダー */
+  border-radius: 50%;
+  margin-top: 15px;
+  width: 200px;
+  height: 200px;
+  animation: rainbow 3s infinite linear;
+  /* アニメーション */
+}
+
+@keyframes rainbow {
+  0% {
+    border-color: #e60000
+  }
+
+  14% {
+    border-color: #f39800
+  }
+
+  28% {
+    border-color: #fff100
+  }
+
+  42% {
+    border-color: #009944
+  }
+
+  56% {
+    border-color: #0068b7
+  }
+
+  70% {
+    border-color: #1d2088
+  }
+
+  85% {
+    border-color: #920783
+  }
+
+  100% {
+    border-color: #e60000
+  }
+}
+
+.card1 {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.skill-container {
+  max-width: 800px;
+  margin: auto;
+  background: transparent;
+  padding: 25px;
+  border: 2px solid #fff;
+  margin-top: 10px;
+}
+
+.skill {
+  margin: 20px 0;
+}
+
+.skill-bar {
+  background-color: #eaeaea;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 20px;
+  border: 1px solid #000;
+}
+
+.skill-progress {
+  height: 100%;
+}
+
+.html {
+  background-color: #666;
+  /* HTMLスキルのバー色 */
+  width: 48%;
+  /* HTMLスキルの幅 */
+}
+
+.css {
+  background-color: #666;
+  /* CSSスキルのバー色 */
+  width: 18%;
+  /* CSSスキルの幅 */
+}
+
+body {
+  background: white;
+  color: black;
+  background-size: cover;
+}
+
+.b {
+  border-radius: 0.5rem;
+  background: white;
+  padding: 10 0 10 0;
+  width: 100%;
+  text-align: center;
+  font-size: 25px;
+  margin-top: 6px;
+}
+
+a {
+  display: contents;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+IN:wght@100..400&display=swap');
+
+.loading {
+  font-family: "Playwrite IN", serif;
+  font-optical-sizing: auto;
+  color: black;
+  font-weight: <weight>;
+  font-style: normal;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeOut 1.5s 2.5s forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.loading__logo {
+  opacity: 0;
+  animation: logo_fade 2s 0.5s forwards;
+  width: 175px;
+}
+
+@keyframes logo_fade {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  text-decoration: none;
+  color: #000;
+  border: 1px solid #000;
+  font-size: 18px;
+  border-radius: 23px;
+  width: 100%;
+  height: 45px;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s, border 0.3s, transform 0.2s ease-out;
+  background-color: #fff;
+}
+
+.button:hover,
+.button:active {
+  background: #000;
+  color: white;
+  border: 1px solid #fff;
+  animation: poyon 0.3s ease-out;
+}
+
+@keyframes poyon {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+
+/* スマートフォン対応 */
+@media screen and (max-width: 768px) {
+  .name {
+    font-size: 24px;
+  }
+
+  .img img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .card1 {
+    max-width: 90%;
+  }
+
+  .skill-container {
+    padding: 15px;
+    margin-top: 5px;
+  }
+
+  .b {
+    font-size: 20px;
+  }
+
+  .loading__logo {
+    width: 120px;
+  }
+
+  .button {
+    font-size: 16px;
+    height: 40px;
+    border-radius: 20px;
+  }
+}
