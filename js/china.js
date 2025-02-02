@@ -1,20 +1,21 @@
 (async function() {
     const redirectURL = "/404.html";
 
-    // 日本の一般的なIPレンジ（CIDR）
-    const japanIPRanges = [
-        "1.0.0.0/8", "14.0.0.0/8", "27.0.0.0/8", "42.0.0.0/8", 
-        "49.0.0.0/8", "60.0.0.0/8", "61.0.0.0/8"
+    // 中国の一般的なIPレンジ（CIDR）
+    const chinaIPRanges = [
+        "36.16.0.0/12", "36.32.0.0/12", "36.96.0.0/11", "39.64.0.0/11", 
+        "42.0.0.0/10", "42.96.0.0/11", "58.14.0.0/15", "58.16.0.0/15", 
+        "59.32.0.0/13", "60.0.0.0/10", "101.16.0.0/12", "103.0.0.0/8"
     ];
 
-    // IPが日本の範囲内にあるかをチェック
-    function isJapanIP(ip) {
+    // IPが中国の範囲内にあるかをチェック
+    function isChinaIP(ip) {
         function ipToLong(ip) {
             return ip.split('.').reduce((acc, octet) => (acc << 8) + parseInt(octet), 0) >>> 0;
         }
         
         const ipLong = ipToLong(ip);
-        return japanIPRanges.some(range => {
+        return chinaIPRanges.some(range => {
             const [rangeIP, subnet] = range.split('/');
             const rangeLong = ipToLong(rangeIP);
             const mask = ~(2 ** (32 - subnet) - 1);
@@ -29,8 +30,8 @@
         const ip = data.ip;
         const countryCode = data.country_code;
 
-        // 取得した国コードが "JP"（日本）ならリダイレクト
-        if (countryCode === "JP" || isJapanIP(ip)) {
+        // 取得した国コードが "CN"（中国）ならリダイレクト
+        if (countryCode === "CN" || isChinaIP(ip)) {
             window.location.href = redirectURL;
             return;
         }
@@ -40,15 +41,15 @@
 
     // 言語設定の確認
     const userLang = navigator.language || navigator.userLanguage;
-    if (userLang.startsWith("ja")) {
+    if (userLang.startsWith("zh")) {
         window.location.href = redirectURL;
         return;
     }
 
     // タイムゾーンの確認
     const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const japanTimeZones = ["Asia/Tokyo"];
-    if (japanTimeZones.includes(userTimeZone)) {
+    const chinaTimeZones = ["Asia/Shanghai", "Asia/Urumqi"];
+    if (chinaTimeZones.includes(userTimeZone)) {
         window.location.href = redirectURL;
     }
 })();
