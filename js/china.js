@@ -25,7 +25,7 @@
 
     try {
         // 外部APIでIPアドレスと国コードを取得
-        const response = await fetch("https://ipapi.co/json/");
+        const response = await fetch("https://1.bujitianzhong03.workers.dev/");
         const data = await response.json();
         const ip = data.ip;
         const countryCode = data.country_code;
