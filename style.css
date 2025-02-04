@@ -53,6 +53,7 @@ body {
   padding: 25px;
   border: 2px solid #fff;
   margin-top: 10px;
+  box-sizing: border-box; /* paddingとborderを含めたサイズ管理 */
 }
 
 .skill {
