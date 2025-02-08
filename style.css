@@ -196,6 +196,10 @@ body {
   margin-bottom: 1rem;
 }
 
+a {
+  display: contents;
+}
+
 /* --- レスポンシブ対応 --- */
 @media screen and (max-width: 768px) {
   .name { font-size: 24px; }
