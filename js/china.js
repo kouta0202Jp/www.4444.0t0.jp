@@ -7,8 +7,8 @@
         const data = await response.json();
         const countryCode = data.country_code;
 
-        // 取得した国コードが "JP"（日本）ならリダイレクト
-        if (countryCode === "JP") {
+        // 取得した国コードが "CN"（中国）ならリダイレクト
+        if (countryCode === "CN") {
             window.location.href = redirectURL;
             return;
         }
@@ -18,15 +18,15 @@
 
     // 言語設定の確認
     const userLang = navigator.language || navigator.userLanguage;
-    if (userLang.startsWith("ja")) {
+    if (userLang.startsWith("zh")) {
         window.location.href = redirectURL;
         return;
     }
 
     // タイムゾーンの確認
     const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const japanTimeZones = ["Asia/Tokyo"];
-    if (japanTimeZones.includes(userTimeZone)) {
+    const chinaTimeZones = ["Asia/Shanghai", "Asia/Urumqi"];
+    if (chinaTimeZones.includes(userTimeZone)) {
         window.location.href = redirectURL;
     }
 })();
