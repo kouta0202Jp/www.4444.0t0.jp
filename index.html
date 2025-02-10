@@ -66,11 +66,6 @@
         </div>
         <i class="fa-solid fa-location-dot" style="color: #fff; font-size: 18px; margin-right: 1px;" aria-hidden="true"></i>
         <strong style="font-size: 18px; color: #fff;">Japan/Sizuoka</strong>
-        <audio id="audioPlayer">
-        </audio>
-        <div>
-          <button id="playButton">再生</button>
-        </div>
       </center>
       <div class="py pf">
         <h2>My Profile</h2>
@@ -110,51 +105,6 @@
       <p align="center">(C) 2024 KOUTA All rights reserved</p>
     </div>
   </div>
-  <script>
-  // 再生する曲リスト
-          const playlist = [
-              "https://dn720301.ca.archive.org/0/items/soundcloud-155173732/155173732.mp3",
-              "http://masanobu.4444.0t0.jp/music/Nightcore TiK Tok.mp3",
-              "http://masanobu.4444.0t0.jp/music/[Nightcore] You're Gonna Go Far Kid 4.mp3"
-          ];
-  
-          let currentTrackIndex = 0; // 現在の曲インデックス
-          const audioPlayer = document.getElementById("audioPlayer");
-          const playButton = document.getElementById("playButton");
-  
-          // 曲をロードして再生する関数
-          function loadAndPlayTrack(index) {
-              if (index < playlist.length) {
-                  audioPlayer.src = playlist[index]; // 曲を設定
-                  audioPlayer.play();               // 再生
-                  playButton.textContent = "停止";  // ボタンのテキスト変更
-              } else {
-                  console.log("プレイリストの終わりです");
-                  playButton.disabled = true; // プレイリストの終わりでボタンを無効化
-              }
-          }
-  
-          // 曲が終了したら次の曲を再生
-          audioPlayer.addEventListener("ended", () => {
-              currentTrackIndex++;
-              if (currentTrackIndex < playlist.length) {
-                  loadAndPlayTrack(currentTrackIndex); // 次の曲を再生
-              } else {
-                  console.log("プレイリストが終了しました");
-                  playButton.disabled = true; // プレイリストが終了したら停止ボタンを無効化
-              }
-          });
-  
-          // 再生ボタンをクリックした時の処理
-          playButton.addEventListener("click", () => {
-              if (audioPlayer.paused) {
-                  loadAndPlayTrack(currentTrackIndex); // 曲を再生
-              } else {
-                  audioPlayer.pause(); // 曲を停止
-                  playButton.textContent = "再生"; // ボタンのテキストを変更
-              }
-          });
-  </script>
 </body>
 
 </html>
