@@ -16,12 +16,10 @@
         console.warn("IPチェック失敗:", error);
     }
 
-    // 言語設定の確認
-    const userLang = navigator.language || navigator.userLanguage;
-    if (userLang.startsWith("zh")) {
-        window.location.href = redirectURL;
-        return;
-    }
+    const userLang = (navigator.language || navigator.userLanguage).toLowerCase();
+        if (userLang.startsWith("zh")) {
+            window.location.href = redirectURL;
+        }
 
     // タイムゾーンの確認
     const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
