@@ -1,5 +1,5 @@
 (async function() {
-    const redirectURL = "/404.html";
+    const redirectURL = "/403.html";
 
     try {
         // 外部APIでIPアドレスと国コードを取得
