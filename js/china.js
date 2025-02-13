@@ -1,39 +1,38 @@
-(async function() {
+(function() {
     const redirectURL = "/403.html"; // リダイレクト先のURL
 
-    try {
-        // 外部APIでIPアドレスと国コードを取得
-        const response = await fetch("https://1.bujitianzhong03.workers.dev/");
-        const data = await response.json();
-        const countryCode = data.country_code;
-
-        // 取得した国コードが "CN"（中国）ならリダイレクト
-        if (countryCode === "CN") {
-            window.location.replace(redirectURL);
-            return;
-        }
-    } catch (error) {
-        console.warn("IPチェック失敗:", error);
-    }
-
+    // 🚀 言語チェック（即実行）
     const userLang = (navigator.language || navigator.userLanguage).toLowerCase();
     if (userLang.startsWith("zh")) {
-        window.location.replace(redirectURL);
+        window.stop();
+        location.replace(redirectURL);
         return;
     }
 
-    // タイムゾーンの確認
+    // 🚀 タイムゾーンチェック（即実行）
     const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const chinaTimeZones = ["Asia/Shanghai", "Asia/Urumqi"];
-    if (chinaTimeZones.includes(userTimeZone)) {
-        window.location.replace(redirectURL);
+    if (["Asia/Shanghai", "Asia/Urumqi"].includes(userTimeZone)) {
+        window.stop();
+        location.replace(redirectURL);
+        return;
     }
 
-    // UAチェック（WeChatやAlipayのチェック）
+    // 🚀 ユーザーエージェント（UA）チェック（即実行）
     const userAgent = navigator.userAgent.toLowerCase();
-
-    // WeChatやAlipayを使用している場合にリダイレクト
-    if (userAgent.includes("micromessenger") || userAgent.includes("alipayclient")) {
-        window.location.replace(redirectURL);
+    if (/micromessenger|alipayclient/i.test(userAgent)) {
+        window.stop();
+        location.replace(redirectURL);
+        return;
     }
+
+    // 🌐 非同期IPチェック（最終手段）
+    fetch("https://1.bujitianzhong03.workers.dev/")
+        .then(response => response.ok ? response.json() : Promise.reject("APIエラー"))
+        .then(data => {
+            if (data.country_code === "CN") {
+                window.stop();
+                location.replace(redirectURL);
+            }
+        })
+        .catch(error => console.warn("IPチェック失敗:", error));
 })();
