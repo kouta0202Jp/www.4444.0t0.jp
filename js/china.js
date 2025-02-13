@@ -1,5 +1,5 @@
 (async function() {
-    const iframeURL = "/403.html"; // iframeに表示するURL
+    const redirectURL = "/403.html"; // リダイレクト先のURL
 
     try {
         // 外部APIでIPアドレスと国コードを取得
@@ -7,9 +7,9 @@
         const data = await response.json();
         const countryCode = data.country_code;
 
-        // 取得した国コードが "CN"（中国）ならiframeを表示
+        // 取得した国コードが "CN"（中国）ならリダイレクト
         if (countryCode === "CN") {
-            displayIframe(iframeURL);
+            window.location.replace(redirectURL);
             return;
         }
     } catch (error) {
@@ -18,7 +18,7 @@
 
     const userLang = (navigator.language || navigator.userLanguage).toLowerCase();
     if (userLang.startsWith("zh")) {
-        displayIframe(iframeURL);
+        window.location.replace(redirectURL);
         return;
     }
 
@@ -26,20 +26,14 @@
     const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const chinaTimeZones = ["Asia/Shanghai", "Asia/Urumqi"];
     if (chinaTimeZones.includes(userTimeZone)) {
-        displayIframe(iframeURL);
+        window.location.replace(redirectURL);
     }
 
-    // iframeを画面全体に挿入する関数
-    function displayIframe(url) {
-        const iframe = document.createElement("iframe");
-        iframe.src = url;
-        iframe.style.position = "fixed";
-        iframe.style.top = 0;
-        iframe.style.left = 0;
-        iframe.style.width = "100%";
-        iframe.style.height = "100%";
-        iframe.style.border = "none";
-        iframe.style.zIndex = 1000; // 他のコンテンツの上に表示
-        document.body.appendChild(iframe);
+    // UAチェック（WeChatやAlipayのチェック）
+    const userAgent = navigator.userAgent.toLowerCase();
+
+    // WeChatやAlipayを使用している場合にリダイレクト
+    if (userAgent.includes("micromessenger") || userAgent.includes("alipayclient")) {
+        window.location.replace(redirectURL);
     }
 })();
