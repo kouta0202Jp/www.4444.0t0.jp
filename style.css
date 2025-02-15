@@ -7,23 +7,10 @@
 
 /* --- 全体設定 --- */
 body {
-  overflow: hidden;
-  height: 100vh;
-  min-height: 100%;
   position: relative;
   top: 0;
   color: white;
-  background: url(https://358.f5.si/image/2.jpg) center center / cover no-repeat;
-}
-
-.win {
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
-  overflow-y: auto;
-  border-radius: 10px;
-  padding: 7px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: black;
 }
 
 /* --- 画像のスタイル --- */
@@ -32,23 +19,10 @@ body {
 }
 
 .img img {
-  border: 4px solid red;
   border-radius: 50%;
   margin-top: 15px;
   width: 200px;
   height: 200px;
-  animation: rainbow 3s infinite linear;
-}
-
-@keyframes rainbow {
-  0% { border-color: #e60000; }
-  14% { border-color: #f39800; }
-  28% { border-color: #fff100; }
-  42% { border-color: #009944; }
-  56% { border-color: #0068b7; }
-  70% { border-color: #1d2088; }
-  85% { border-color: #920783; }
-  100% { border-color: #e60000; }
 }
 
 /* --- テキスト設定 --- */
@@ -118,14 +92,6 @@ body {
   background: #000;
   color: white;
   border: 1px solid #fff;
-  animation: poyon 0.3s ease-out;
-}
-
-/* ぷよんと弾むアニメーション */
-@keyframes poyon {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
 }
 
 /* --- 汎用コンポーネント --- */
@@ -183,7 +149,7 @@ body {
 }
 
 .py:hover, .py:active {
-  transform: scale(0.9);
+  transform: scale(0.96);
 }
 
 /* --- .pf コンポーネント --- */
