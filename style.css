@@ -1,16 +1,45 @@
-/* --- フォント設定 --- */
-@import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti&display=swap');
+/* --- CSS変数の設定 --- */
+:root {
+  /* ライトモードのデフォルト色 */
+  --bg-color: white;
+  --text-color: white;
+  --button-bg: #fff;
+  --button-text: #000;
+  --button-border: #fff;  /* ボーダーの色 */
+  --skill-bar-bg: #eaeaea;
+  --skill-progress-html: #666;
+  --skill-progress-css: #444;
+  --border-color: #fff;  /* ボーダーの色 */
+  --loading-bg: #fff;
+  --loading-logo-opacity: 1;
+  --font-family: "Kaisei Opti", serif;
+}
 
-* {
-  font-family: "Kaisei Opti", serif;
+/* --- ダークモードの色設定 --- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* ダークモード時の色 */
+    --bg-color: #000;
+    --text-color: #fff;
+    --button-bg: #000;  /* ダークモードボタンの背景色 */
+    --button-text: #fff;  /* ダークモードボタンの文字色 */
+    --button-border: #fff;  /* ダークモードのボーダー色 */
+    --skill-bar-bg: #333;
+    --skill-progress-html: #555;
+    --skill-progress-css: #444;
+    --border-color: #fff;  /* ボーダーの色 */
+    --loading-bg: #333;
+    --loading-logo-opacity: 0;
+  }
 }
 
 /* --- 全体設定 --- */
 body {
   position: relative;
   top: 0;
-  color: white;
-  background: black;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-family), serif;
 }
 
 /* --- 画像のスタイル --- */
@@ -31,6 +60,10 @@ body {
   font-weight: bold;
 }
 
+i {
+  color: var(--text-color);
+}
+
 /* --- カード・スキルセクション --- */
 .card1, .skill-container {
   max-width: 800px;
@@ -40,9 +73,9 @@ body {
 .skill-container {
   background: transparent;
   padding: 25px;
-  border: 2px solid #fff;
+  border: 2px solid var(--border-color);
   margin-top: 10px;
-  box-sizing: border-box; /* paddingとborderを含めたサイズ管理 */
+  box-sizing: border-box;
 }
 
 .skill {
@@ -50,27 +83,28 @@ body {
 }
 
 .skill-bar {
-  background-color: #eaeaea;
+  background-color: var(--skill-bar-bg);
   border-radius: 5px;
   overflow: hidden;
   height: 20px;
-  border: 1px solid #000;
+  border: 1px solid var(--border-color);
 }
 
 .skill-progress {
   height: 100%;
 }
 
-.html, .css {
-  background-color: #666;
+.html {
+  background-color: var(--skill-progress-html);
 }
 
-.html { width: 48%; }
-.css { width: 18%; }
+.css {
+  background-color: var(--skill-progress-css);
+}
 
 /* --- ボタンデザイン --- */
 .button {
-  margin-top:15px;
+  margin-top: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,9 +113,9 @@ body {
   font-size: 18px;
   font-weight: bold;
   text-decoration: none;
-  color: #000;
-  background-color: #fff;
-  border: 1px solid #000;
+  color: var(--button-text);
+  background-color: var(--button-bg);
+  border: 1px solid var(--button-border);  /* ボーダーの色 */
   border-radius: 23px;
   line-height: 1;
   transition: background-color 0.3s, color 0.3s, border 0.3s, transform 0.2s ease-out;
@@ -89,15 +123,15 @@ body {
 
 .button:hover, 
 .button:active {
-  background: #000;
-  color: white;
-  border: 1px solid #fff;
+  background: var(--button-border);
+  color: var(--button-bg);
+  border: 1px solid var(--button-bg);
 }
 
 /* --- 汎用コンポーネント --- */
 .b {
   border-radius: 0.5rem;
-  background: white;
+  background: var(--button-bg);
   padding: 10px 0;
   width: 100%;
   text-align: center;
@@ -108,17 +142,13 @@ body {
 /* --- ローディングアニメーション --- */
 .loading {
   font-family: "Playwrite IN", serif;
-  font-optical-sizing: auto;
-  color: black;
-  font-weight: normal;
-  font-style: normal;
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   z-index: 10;
-  background-color: #fff;
+  background-color: var(--loading-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,7 +161,7 @@ body {
 }
 
 .loading__logo {
-  opacity: 0;
+  opacity: var(--loading-logo-opacity);
   animation: logo_fade 2s 0.5s forwards;
   width: 175px;
 }
@@ -156,25 +186,20 @@ body {
 .pf {
   width: 100%;
   max-width: 800px;
-  font-family: 'Arial', sans-serif;
-  color: #fff;
+  color: var(--text-color);
   background: transparent;
-  border: 2px solid #fff;
+  border: 2px solid var(--border-color);
   box-sizing: border-box;
   padding: 1.5rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 0 auto; /* センター配置 */
+  margin: 0 auto;
 }
 
 .pf h2 {
   text-align: center;
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid var(--border-color);
   padding-bottom: 0.5rem;
   margin-bottom: 1rem;
-}
-
-a {
-  display: contents;
 }
 
 /* --- レスポンシブ対応 --- */
