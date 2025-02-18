@@ -1,225 +1,91 @@
-/* --- CSS変数の設定 --- */
-:root {
-  /* ライトモードのデフォルト色 */
-  --bg-color: white;
-  --text-color: white;
-  --button-bg: #fff;
-  --button-text: #000;
-  --button-border: #fff;  /* ボーダーの色 */
-  --skill-bar-bg: #eaeaea;
-  --skill-progress-html: #666;
-  --skill-progress-css: #444;
-  --border-color: #fff;  /* ボーダーの色 */
-  --loading-bg: #fff;
-  --loading-logo-opacity: 1;
-  --font-family: "Kaisei Opti", serif;
-}
-
-/* --- ダークモードの色設定 --- */
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* ダークモード時の色 */
-    --bg-color: #000;
-    --text-color: #fff;
-    --button-bg: #000;  /* ダークモードボタンの背景色 */
-    --button-text: #fff;  /* ダークモードボタンの文字色 */
-    --button-border: #fff;  /* ダークモードのボーダー色 */
-    --skill-bar-bg: #333;
-    --skill-progress-html: #555;
-    --skill-progress-css: #444;
-    --border-color: #fff;  /* ボーダーの色 */
-    --loading-bg: #333;
-    --loading-logo-opacity: 0;
-  }
-}
-
-/* --- 全体設定 --- */
+/* 全体設定 */
 body {
-  position: relative;
-  top: 0;
-  background: var(--bg-color);
-  color: var(--text-color);
-  font-family: var(--font-family), serif;
+    display: flex;
+    flex-direction: column; /* 縦並び */
+    align-items: center; /* 水平方向中央 */
+    justify-content: center; /* 縦方向中央 */
+    margin: 0;
+    text-align: center;
+    color: #fff;
+    background-color: #333;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto; /* 水平方向中央 */
 }
 
-/* --- 画像のスタイル --- */
-.img {
-  text-align: center;
+/* 画像設定 */
+img {
+    width: 150px;
+    height: 150px;
+    margin-top: 15px;
+}
+.img{border-radius: 50%;}
+/* 強調文字（strong） */
+strong {
+    font-size: 5vw;
 }
 
-.img img {
-  border-radius: 50%;
-  margin-top: 15px;
-  width: 200px;
-  height: 200px;
+/* リンク設定 */
+a {
+    display: contents;
 }
 
-/* --- テキスト設定 --- */
-.name {
-  font-size: 30px;
-  font-weight: bold;
+/* SNSリンクのフォントサイズ */
+.sns {
+    font-size: 8vw;
+    color: #fff;
 }
 
-i {
-  color: var(--text-color);
+/* テーブル設定 */
+.jj {
+    width: 100%;
+    border-collapse: collapse; /* ボーダーの重なりをなくす */
 }
 
-/* --- カード・スキルセクション --- */
-.card1, .skill-container {
-  max-width: 800px;
-  margin: auto;
+/* テーブルセル設定 */
+.jj td {
+    padding: 10px;
+    border: 1px solid #ccc; /* ボーダーの色 */
+    text-align: left;
 }
 
-.skill-container {
-  background: transparent;
-  padding: 25px;
-  border: 2px solid var(--border-color);
-  margin-top: 10px;
-  box-sizing: border-box;
+/* 左側の列（ラベル）の文字を太字に */
+.jj td:nth-child(odd) {
+    font-weight: bold;
 }
 
-.skill {
-  margin: 20px 0;
+/* レスポンシブデザイン - PCサイズ以上 */
+@media (min-width: 768px) {
+    .sns {
+        font-size: 30px; /* PCでは3vw */
+    }
+
+    strong {
+        font-size: 30px;
+    }
 }
 
-.skill-bar {
-  background-color: var(--skill-bar-bg);
-  border-radius: 5px;
-  overflow: hidden;
-  height: 20px;
-  border: 1px solid var(--border-color);
-}
+/* レスポンシブデザイン - モバイルサイズ以下 */
+@media (max-width: 767px) {
+    .sns {
+        font-size: 35px; /* モバイルでは6vw */
+    }
 
-.skill-progress {
-  height: 100%;
+    strong {
+        font-size: 4vw; /* モバイルでは4vw */
+    }
 }
-
-.html {
-  background-color: var(--skill-progress-html);
-}
-
-.css {
-  background-color: var(--skill-progress-css);
-}
-
-/* --- ボタンデザイン --- */
 .button {
-  margin-top: 15px;
+margin-top: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 45px;
-  font-size: 18px;
-  font-weight: bold;
-  text-decoration: none;
-  color: var(--button-text);
-  background-color: var(--button-bg);
-  border: 1px solid var(--button-border);  /* ボーダーの色 */
-  border-radius: 23px;
   line-height: 1;
-  transition: background-color 0.3s, color 0.3s, border 0.3s, transform 0.2s ease-out;
-}
-
-.button:hover, 
-.button:active {
-  background: var(--button-border);
-  color: var(--button-bg);
-  border: 1px solid var(--button-bg);
-}
-
-/* --- 汎用コンポーネント --- */
-.b {
-  border-radius: 0.5rem;
-  background: var(--button-bg);
-  padding: 10px 0;
+  text-decoration: none;
+  color: #000000;
+  font-size: 22px;
+  border-radius: 30px;
   width: 100%;
-  text-align: center;
-  font-size: 25px;
-  margin-top: 6px;
-}
-
-/* --- ローディングアニメーション --- */
-.loading {
-  font-family: "Playwrite IN", serif;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 10;
-  background-color: var(--loading-bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: fadeOut 1.5s 2.5s forwards;
-}
-
-@keyframes fadeOut {
-  0% { opacity: 1; }
-  100% { opacity: 0; visibility: hidden; }
-}
-
-.loading__logo {
-  opacity: var(--loading-logo-opacity);
-  animation: logo_fade 2s 0.5s forwards;
-  width: 175px;
-}
-
-@keyframes logo_fade {
-  0% { opacity: 0; transform: translateY(20px); }
-  60% { opacity: 1; transform: translateY(0); }
-  100% { opacity: 0; }
-}
-
-/* --- クリック時の縮小アニメーション --- */
-.py {
-  display: inline-block;
-  transition: transform 0.3s ease;
-}
-
-.py:hover, .py:active {
-  transform: scale(0.96);
-}
-
-/* --- .pf コンポーネント --- */
-.pf {
-  width: 100%;
-  max-width: 800px;
-  color: var(--text-color);
-  background: transparent;
-  border: 2px solid var(--border-color);
-  box-sizing: border-box;
-  padding: 1.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 0 auto;
-}
-
-.pf h2 {
-  text-align: center;
-  border-bottom: 2px solid var(--border-color);
-  padding-bottom: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-/* --- レスポンシブ対応 --- */
-@media screen and (max-width: 768px) {
-  .name { font-size: 24px; }
-  .img img { width: 150px; height: 150px; }
-  .card1 { max-width: 90%; }
-  .skill-container { padding: 15px; margin-top: 5px; }
-  .b { font-size: 20px; }
-  .loading__logo { width: 120px; }
-  .button { font-size: 16px; height: 50px; border-radius: 20px; }
-}
-
-@media (max-width: 600px) {
-  .pf {
-    padding: 1rem;
-    font-size: 14px;
-  }
-
-  .pf h2 {
-    font-size: 18px;
-  }
+  height: 40px;
+  background-color: #ffffff;
 }
