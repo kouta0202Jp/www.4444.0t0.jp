@@ -1,94 +1,47 @@
-/* 全体設定 */
+*{
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 500;
+  font-style: normal; 
+}
+
 body {
-    display: flex;
-    flex-direction: column; /* 縦並び */
-    align-items: center; /* 水平方向中央 */
-    justify-content: center; /* 縦方向中央 */
-    margin: 0;
-    text-align: center;
-    color: #fff;
-    background-color: #333;
-    max-width: 650px;
-    margin-left: auto;
-    margin-right: auto; /* 水平方向中央 */
+  background: url(https://images.pexels.com/photos/1110656/pexels-photo-1110656.jpeg) no-repeat center center / cover;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* 画像設定 */
 img {
-    width: 150px;
-    height: 150px;
-    margin-top: 15px;
-}
-.img{border-radius: 50%;}
-/* 強調文字（strong） */
-strong {
-    font-size: 5vw;
+  border-radius: 50%;
 }
 
-/* リンク設定 */
-a {
-    display: contents;
+.glass-container {
+  width: 90%;
+  max-width: 300px;
+  height: 370px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 191, 255, 0.075);
+  box-shadow: 2px 8px 8px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 2px solid rgba(40, 40, 40, 0.35);
+  border-right: 2px solid rgba(40, 40, 40, 0.35);
+  box-sizing: border-box;
 }
 
-/* SNSリンクのフォントサイズ */
-.sns {
-    font-size: 8vw;
-    color: #fff;
+.no-margin {
+  margin: 0 !important;
 }
 
-/* テーブル設定 */
-.jj {
-    width: 100%;
-    border-collapse: collapse; /* ボーダーの重なりをなくす */
-}
-
-/* テーブルセル設定 */
-.jj td {
-    padding: 10px;
-    border: 1px solid #ccc; /* ボーダーの色 */
-    text-align: left;
-}
-
-/* 左側の列（ラベル）の文字を太字に */
-.jj td:nth-child(odd) {
-    font-weight: bold;
-}
-
-/* レスポンシブデザイン - PCサイズ以上 */
-@media (min-width: 768px) {
-    .sns {
-        font-size: 30px; /* PCでは3vw */
-    }
-
-    strong {
-        font-size: 30px;
-    }
-}
-
-/* レスポンシブデザイン - モバイルサイズ以下 */
-@media (max-width: 767px) {
-    .sns {
-        font-size: 35px; /* モバイルでは6vw */
-    }
-
-    strong {
-        font-size: 4vw; /* モバイルでは4vw */
-    }
-}
-.button {
-margin-top:10px;
-    width:100%;
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #fff;
-  color: #000;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 30px; /* 角丸 */
-  transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-/* ホバー時に拡大 */
-.button:hover {
-  transform: scale(1.1); /* 1.1倍に拡大 */
+.big {
+  font-size: 1.5em;
 }
