@@ -78,7 +78,7 @@ i {
 .loading__logo {
   opacity: 0;
   animation: logo_fade 2s 0.5s forwards;
-  width: 175px;
+  width: 24rem;
 }
 
 @keyframes logo_fade {
